@@ -1,0 +1,6 @@
+resources:
+  - kubemqdashboards.core.k8s.kubemq.io.crd.yaml
+  - kubemqconnectors.core.k8s.kubemq.io.crd.yaml
+  - kubemqclusters.core.k8s.kubemq.io.crd.yaml
+  - role.yaml
+

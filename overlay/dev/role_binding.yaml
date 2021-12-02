@@ -1,0 +1,44 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kubemq-operator-dev-crb
+subjects:
+  - kind: ServiceAccount
+    name: kubemq-operator
+    namespace: kubemq
+roleRef:
+  kind: ClusterRole
+  name: kubemq-operator
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: kubemq-cluster
+rules:
+  - apiGroups:
+      - security.openshift.io
+    resources:
+      - securitycontextconstraints
+    verbs:
+      - use
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    resourceNames:
+      - privileged
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kubemq-cluster
+subjects:
+  - kind: ServiceAccount
+    name: kubemq-cluster
+roleRef:
+  kind: Role
+  name: kubemq-cluster
+  apiGroup: rbac.authorization.k8s.io

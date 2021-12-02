@@ -1,0 +1,10 @@
+apiVersion: core.k8s.kubemq.io/v1beta1
+kind: KubemqCluster
+metadata:
+  name: kubemq-cluster
+spec:
+  key: <yourkey>
+  replicas: 3
+
+
+
